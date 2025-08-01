@@ -1,60 +1,85 @@
-import React from "react";
+import React from 'react';
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Stack,
+  Paper,
+  IconButton,
+} from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 bg-white text-gray-800">
-      <div className="container mx-auto px-4 max-w-xl text-center">
-        <h2 className="text-3xl font-bold text-pink-600 mb-6">Contact Me</h2>
-        <p className="mb-8 text-lg">
-          I'm currently open to freelance or full-time opportunities. Feel free
-          to reach out!
-        </p>
+    <Box
+      id="contact"
+      sx={{
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        color: 'text.primary',
+        p: 4,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Paper elevation={4} sx={{ p: 4, maxWidth: 600, width: '100%', borderRadius: 3 }}>
+        <Typography variant="h4" fontWeight="bold" gutterBottom align="center">
+          Contact Me
+        </Typography>
 
+        {/* Form */}
         <form
-          action="https://formspree.io/f/your-form-id"
+          action="https://formspree.io/f/xqkrzyyd"
           method="POST"
-          className="space-y-4"
         >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Your Message"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-          ></textarea>
-          <button
-            type="submit"
-            className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition"
-          >
-            Send Message
-          </button>
+          <Stack spacing={3}>
+            <TextField label="Name" name="name" fullWidth required />
+            <TextField label="Email" name="email" type="email" fullWidth required />
+            <TextField
+              label="Message"
+              name="message"
+              multiline
+              rows={4}
+              fullWidth
+              required
+            />
+            <Button type="submit" variant="contained" color="primary">
+              Send Message
+            </Button>
+          </Stack>
         </form>
 
-        <p className="mt-8 text-gray-600">
-          Or email me directly at:{" "}
-          <a
+        {/* Contact Info */}
+        <Stack direction="row" spacing={2} justifyContent="center" mt={4}>
+          <IconButton
             href="mailto:njorovista@gmail.com"
-            className="text-pink-600 hover:underline"
+            target="_blank"
+            rel="noopener"
+            color="primary"
           >
-            njorovista@gmail.com
-          </a>
-        </p>
-      </div>
-    </section>
+            <EmailIcon />
+          </IconButton>
+          <IconButton
+            href="tel:+254 724015861"
+            color="primary"
+          >
+            <PhoneIcon />
+          </IconButton>
+          <IconButton
+            href="https://www.linkedin.com/in/francis-njoroge-31698181/"
+            target="_blank"
+            rel="noopener"
+            color="primary"
+          >
+            <LinkedInIcon />
+          </IconButton>
+        </Stack>
+      </Paper>
+    </Box>
   );
 }
 

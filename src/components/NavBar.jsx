@@ -1,24 +1,103 @@
-import React from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import React, { useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useTheme,
+  useMediaQuery
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
 
-<FaGithub className="text-2xl text-gray-700 hover:text-pink-600" />
-
+const navLinks = [
+  { title: 'Home', path: '/' },
+  { title: 'About', path: '/about' },
+  { title: 'Projects', path: '/projects' },
+  { title: 'Skills', path: '/skills' },
+  { title: 'Experience', path: '/experience' },
+  { title: 'Contact', path: '/contact' },
+];
 
 function NavBar() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
+
+  const drawer = (
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+      <List>
+        {navLinks.map((link) => (
+          <ListItem
+            button
+            key={link.title}
+            component={RouterLink}
+            to={link.path}
+          >
+            <ListItemText primary={link.title} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-pink-600">Francis Njoroge</h1>
-        <ul className="flex space-x-6 text-gray-700 font-medium">
-          <li><a href="#home" className="hover:text-pink-600">Home</a></li>
-          <li><a href="#about" className="hover:text-pink-600">About</a></li>
-          <li><a href="#projects" className="hover:text-pink-600">Projects</a></li>
-          <li><a href="#skills" className="hover:text-pink-600">Skills</a></li>
-          <li><a href="#experience" className="hover:text-pink-600">Experience</a></li>
-          <li><a href="#contact" className="hover:text-pink-600">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+    <>
+      <AppBar position="sticky" color="primary" elevation={2}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          {/* Name / Logo */}
+          <Typography
+            variant="h6"
+            component={RouterLink}
+            to="/"
+            sx={{ color: 'inherit', textDecoration: 'none', fontWeight: 'bold' }}
+          >
+            Francis Njoroge
+          </Typography>
+
+          {/* Desktop Links */}
+          {!isMobile ? (
+            <Box>
+              {navLinks.map((link) => (
+                <Button
+                  key={link.title}
+                  component={RouterLink}
+                  to={link.path}
+                  sx={{ color: 'white', textTransform: 'none' }}
+                >
+                  {link.title}
+                </Button>
+              ))}
+            </Box>
+          ) : (
+            // Mobile Hamburger
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+        </Toolbar>
+      </AppBar>
+
+      {/* Drawer for mobile */}
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+        {drawer}
+      </Drawer>
+    </>
   );
 }
 

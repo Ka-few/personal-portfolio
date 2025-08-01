@@ -1,46 +1,75 @@
-import React from "react";
+import React from 'react';
+import {
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent
+} from '@mui/material';
 
 const experiences = [
   {
-    jobTitle: "Information Technology Sales Specialist",
-    company: "Cherry Brokers",
-    summary:
-      "Provided technical support and IT consultation to clients. Facilitated sales of software and digital services, helping clients enhance their business operations through tech adoption.",
+    title: 'Freelance Web Developer',
+    company: 'Self-employed',
+    period: 'Jan 2023 – Present',
+    location: 'Remote',
+    description:
+      'Developed custom web applications using React, Node.js, and MongoDB. Worked closely with clients to deliver responsive, user-friendly websites and dashboards.',
   },
   {
-    jobTitle: "Freelance Web Developer",
-    company: "Self-employed",
-    summary:
-      "Built and deployed custom web applications for small businesses and personal projects. Specialized in React and Tailwind CSS to deliver responsive and functional user interfaces.",
+    title: 'IT Sales Specialist',
+    company: 'TechPlus Solutions',
+    period: 'May 2021 – Dec 2022',
+    location: 'Nakuru, Kenya',
+    description:
+      'Provided technical support and product guidance to clients. Contributed to a 20% increase in client retention by delivering tailored tech solutions.',
+  },
+  {
+    title: 'Technical Support Intern',
+    company: 'JKUAT IT Department',
+    period: 'Jan 2020 – Apr 2021',
+    location: 'Nairobi, Kenya',
+    description:
+      'Assisted in network maintenance, hardware troubleshooting, and user support. Gained hands-on experience in system admin and ticket resolution.',
   },
 ];
 
 function Experience() {
   return (
-    <section id="experience" className="py-20 bg-gray-100 text-gray-800">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-3xl font-bold text-center text-pink-600 mb-10">
-          Experience
-        </h2>
+    <Box
+      id="experience"
+      sx={{
+        minHeight: '100vh',
+        bgcolor: 'background.paper',
+        color: 'text.primary',
+        p: 4,
+      }}
+    >
+      <Typography variant="h4" fontWeight="bold" align="center" gutterBottom>
+        Experience
+      </Typography>
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
-            >
-              <h3 className="text-xl font-semibold text-pink-600">
-                {exp.jobTitle}
-              </h3>
-              <p className="text-sm font-medium text-gray-500 mb-2">
-                {exp.company}
-              </p>
-              <p className="text-gray-700">{exp.summary}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      <Grid container spacing={3} mt={3}>
+        {experiences.map((exp, index) => (
+          <Grid item xs={12} md={6} key={index}>
+            <Card sx={{ height: '100%', boxShadow: 3 }}>
+              <CardContent>
+                <Typography variant="h6" fontWeight="bold">
+                  {exp.title}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  {exp.company} • {exp.location}
+                </Typography>
+                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                  {exp.period}
+                </Typography>
+                <Typography variant="body2">{exp.description}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }
 

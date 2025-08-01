@@ -1,32 +1,65 @@
-import React from "react";
+import React from 'react';
+import {
+  Box,
+  Typography,
+  Paper,
+  Stack,
+  Chip,
+  Divider,
+} from '@mui/material';
 
-const skills = [
-  "JavaScript (JS)",
-  "React",
-  "Tailwind CSS",
-  "JSON Server",
-  "Git & GitHub",
-  "Node.js (basic)",
-];
+const categorizedSkills = {
+  'Frontend': ['React', 'Material UI', 'Tailwind CSS', 'HTML', 'CSS', 'JavaScript'],
+  'Backend': ['Node.js', 'Express', 'JSON Server', 'MongoDB'],
+  'Tools & Others': ['Git & GitHub', 'Netlify', 'Vercel', 'Postman', 'Figma', 'VS Code'],
+};
 
 function Skills() {
   return (
-    <section id="skills" className="py-20 bg-white text-gray-800">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-pink-600 mb-10">Skills</h2>
+    <Box
+      id="skills"
+      sx={{
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        color: 'text.primary',
+        p: 4,
+      }}
+    >
+      <Typography variant="h4" fontWeight="bold" align="center" gutterBottom>
+        Skills
+      </Typography>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="bg-pink-100 text-pink-700 px-6 py-3 rounded-full font-semibold shadow hover:bg-pink-200 transition"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      <Stack spacing={4} mt={4}>
+        {Object.entries(categorizedSkills).map(([category, skills], idx) => (
+          <Paper
+            key={idx}
+            elevation={3}
+            sx={{
+              p: 3,
+              borderRadius: 2,
+              bgcolor: 'background.paper',
+            }}
+          >
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+              {category}
+            </Typography>
+            <Divider sx={{ mb: 2 }} />
+
+            <Stack direction="row" spacing={1} flexWrap="wrap">
+              {skills.map((skill, index) => (
+                <Chip
+                  key={index}
+                  label={skill}
+                  variant="outlined"
+                  color="primary"
+                  sx={{ m: 0.5 }}
+                />
+              ))}
+            </Stack>
+          </Paper>
+        ))}
+      </Stack>
+    </Box>
   );
 }
 
