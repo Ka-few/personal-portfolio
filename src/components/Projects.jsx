@@ -35,7 +35,7 @@ const projects = [
       'An online grocery shop built with React and JSON Server allowing users to add products, browse, and manage a cart.',
     image: '/mama-mboga.png',
     github: 'https://github.com/Ka-few/mama-mboga',
-    demo: 'https://mama-mboga-pkyg.vercel.app/'
+    demo: 'https://mama-mboga-duka.vercel.app/'
   }
 ];
 
