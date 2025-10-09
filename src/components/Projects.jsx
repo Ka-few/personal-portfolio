@@ -19,7 +19,7 @@ const projects = [
       'A full-stack web application for managing beauty parlour services and customer appointments. Built with React (Vite) for the frontend and Flask (Python) for the backend.',
     image: '/Beauty palour.jpg',
     github: 'https://github.com/Ka-few/Beauty-parlor-app',
-    demo: 'beauty-parlor-app-ztgj.vercel.app'
+    demo: 'https://beauty-parlor-app-ztgj.vercel.app/'
   },
   {
     title: 'Digital Bull Semen Catalog',
