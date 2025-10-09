@@ -14,12 +14,12 @@ import LaunchIcon from '@mui/icons-material/Launch';
 
 const projects = [
   {
-    title: 'Smart Goal Planner',
+    title: 'A Beauty palour management app',
     description:
-      'A React app that helps users set, track, and manage multiple financial goals with real-time progress bars and charts.',
-    image: '/goal-planner.png',
-    github: 'https://github.com/Ka-few/smart-goal-planner',
-    demo: 'https://smart-goal-planner-crqg.vercel.app/'
+      'A full-stack web application for managing beauty parlour services and customer appointments. Built with React (Vite) for the frontend and Flask (Python) for the backend.',
+    image: '/Beauty palour.jpg',
+    github: 'https://github.com/Ka-few/Beauty-parlor-app',
+    demo: 'beauty-parlor-app-ztgj.vercel.app'
   },
   {
     title: 'Digital Bull Semen Catalog',

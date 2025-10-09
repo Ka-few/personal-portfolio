@@ -10,7 +10,7 @@ import {
 
 const categorizedSkills = {
   'Frontend': ['React', 'Material UI', 'Tailwind CSS', 'HTML', 'CSS', 'JavaScript'],
-  'Backend': ['Node.js', 'Express', 'JSON Server', 'MongoDB'],
+  'Backend': ['Node.js', 'Express', 'Flask', 'MongoDB', 'Django'],
   'Tools & Others': ['Git & GitHub', 'Netlify', 'Vercel', 'Postman', 'Figma', 'VS Code'],
 };
 
