@@ -19,7 +19,7 @@ function Home() {
       <Stack spacing={2} alignItems="center">
         {/* Avatar Image */}
         <Avatar
-          src="/IMG_1693.JPG"
+          src="/Francis.JPG"
           alt="Francis Njoroge"
           sx={{ width: 150, height: 150 }}
         />

@@ -34,7 +34,7 @@ function About() {
         <Grid item xs={12} md={4}>
           <Box display="flex" justifyContent="center">
             <Avatar
-              src="/IMG_1693.JPG"
+              src="/Francis.JPG"
               alt="Francis Njoroge"
               sx={{ width: 200, height: 200 }}
             />
