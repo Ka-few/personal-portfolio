@@ -24,10 +24,10 @@ const projects = [
   {
     title: 'Rental Property BI Dashboard',
     description: 'A modern, interactive Business Intelligence dashboard for rental property portfolio managers to analyze revenue trends, occupancy rates, and forecasting.',
-    image: '/mama-mboga.png',
+    image: '/house.png',
     icon: 'https://cdn-icons-png.flaticon.com/128/1822/1822092.png',
-    github: 'https://github.com/Ka-few', 
-    demo: '#', 
+    github: 'https://github.com/Ka-few',
+    demo: 'https://rental-property-business-intelligen.vercel.app/',
     tags: ['Next.js 16', 'TypeScript', 'Tailwind', 'Recharts']
   }
 ];
@@ -44,8 +44,8 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.5 }
   }
@@ -55,7 +55,7 @@ function Projects() {
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,7 +66,7 @@ function Projects() {
           <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -74,20 +74,20 @@ function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={cardVariants}
               className="group relative bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-colors duration-300 shadow-xl flex flex-col"
             >
               <div className="relative h-48 overflow-hidden bg-white/5 shrink-0">
                 <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-300 z-10 mix-blend-overlay pointer-events-none"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              
+
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-background border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
@@ -95,11 +95,11 @@ function Projects() {
                   </div>
                   <h3 className="text-xl font-bold text-white leading-tight">{project.title}</h3>
                 </div>
-                
+
                 <p className="text-gray-400 text-sm mb-6 line-clamp-4 leading-relaxed flex-grow">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
                     <span key={i} className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full">
@@ -109,7 +109,7 @@ function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
-                  <a 
+                  <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -118,7 +118,7 @@ function Projects() {
                     <FaGithub size={18} /> Code
                   </a>
                   {project.demo !== '#' && (
-                    <a 
+                    <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
