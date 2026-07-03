@@ -7,6 +7,7 @@ const projects = [
     title: 'Beauty Parlor App',
     description: 'A full-stack web application for managing beauty parlor services, stylists, and customer appointments featuring JWT auth, role-based access, and M-Pesa payments.',
     image: '/Beauty palour.jpg',
+    icon: 'https://www.google.com/s2/favicons?domain=beauty-parlor-app-ztgj.vercel.app&sz=128',
     github: 'https://github.com/Ka-few/Beauty-parlor-app',
     demo: 'https://beauty-parlor-app-ztgj.vercel.app',
     tags: ['React', 'Flask', 'Vite', 'SQLite']
@@ -15,6 +16,7 @@ const projects = [
     title: 'Digital Bull Semen Catalog',
     description: 'A comprehensive digital platform connecting dairy farmers with top-tier genetics, certified veterinary professionals, and agricultural semen suppliers featuring geospatial logistics.',
     image: '/bull-catalog.png',
+    icon: 'https://www.google.com/s2/favicons?domain=digital-bull-catalog-amber.vercel.app&sz=128',
     github: 'https://github.com/Ka-few/Bull-Semen-Catalog',
     demo: 'https://digital-bull-catalog-amber.vercel.app/',
     tags: ['React', 'Node.js', 'Express', 'Leaflet']
@@ -22,9 +24,10 @@ const projects = [
   {
     title: 'Rental Property BI Dashboard',
     description: 'A modern, interactive Business Intelligence dashboard for rental property portfolio managers to analyze revenue trends, occupancy rates, and forecasting.',
-    image: '/mama-mboga.png', // Fallback image since none was provided
-    github: 'https://github.com/Ka-few', // Fallback link
-    demo: '#', // Fallback link
+    image: '/mama-mboga.png',
+    icon: 'https://cdn-icons-png.flaticon.com/128/1822/1822092.png',
+    github: 'https://github.com/Ka-few', 
+    demo: '#', 
     tags: ['Next.js 16', 'TypeScript', 'Tailwind', 'Recharts']
   }
 ];
@@ -74,9 +77,9 @@ function Projects() {
             <motion.div 
               key={index}
               variants={cardVariants}
-              className="group relative bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-colors duration-300 shadow-xl"
+              className="group relative bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-colors duration-300 shadow-xl flex flex-col"
             >
-              <div className="relative h-48 overflow-hidden bg-white/5">
+              <div className="relative h-48 overflow-hidden bg-white/5 shrink-0">
                 <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-300 z-10 mix-blend-overlay pointer-events-none"></div>
                 <img 
                   src={project.image} 
@@ -85,9 +88,15 @@ function Projects() {
                 />
               </div>
               
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3 leading-relaxed">
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-background border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                    <img src={project.icon} alt={`${project.title} icon`} className="w-6 h-6 object-contain" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white leading-tight">{project.title}</h3>
+                </div>
+                
+                <p className="text-gray-400 text-sm mb-6 line-clamp-4 leading-relaxed flex-grow">
                   {project.description}
                 </p>
                 
@@ -99,7 +108,7 @@ function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 mt-auto">
+                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
                   <a 
                     href={project.github}
                     target="_blank"
@@ -108,14 +117,16 @@ function Projects() {
                   >
                     <FaGithub size={18} /> Code
                   </a>
-                  <a 
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-primary hover:text-emerald-400 transition-colors"
-                  >
-                    <FaExternalLinkAlt size={16} /> Live Demo
-                  </a>
+                  {project.demo !== '#' && (
+                    <a 
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-primary hover:text-emerald-400 transition-colors"
+                    >
+                      <FaExternalLinkAlt size={16} /> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -1,12 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const categorizedSkills = {
-  'Frontend': ['React', 'Next.js', 'Vite', 'TypeScript', 'Tailwind CSS', 'Material UI', 'HTML5', 'CSS3'],
-  'Backend': ['Node.js', 'Express', 'Flask', 'Python', 'REST APIs'],
-  'Database & Cloud': ['SQLite', 'MongoDB', 'PostgreSQL', 'Vercel', 'Render'],
-  'Tools & Methods': ['Git & GitHub', 'Postman', 'Figma', 'Agile/Scrum', 'BI Dashboards'],
-};
+const skills = [
+  'Full-Stack Web Development (React, TypeScript, JavaScript, HTML5, CSS3)',
+  'Backend Development (Python, Django, Flask, Node.js, Express)',
+  'Database Design (PostgreSQL, MySQL, SQLite)',
+  'REST APIs & System Integration',
+  'Authentication & Role-Based Access Control',
+  'Dashboard & Reporting Development',
+  'Workflow Automation & Business Systems',
+  'Responsive UI/UX Design',
+  'Git, GitHub, Docker, CI/CD, Linux',
+  'Cloud Deployment',
+  'AI Integration & Automation',
+  'Agile Development & Technical Documentation'
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -19,11 +27,11 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, y: 10 },
   visible: { 
     opacity: 1, 
-    scale: 1,
-    transition: { type: 'spring', stiffness: 200, damping: 10 }
+    y: 0,
+    transition: { duration: 0.3 }
   }
 };
 
@@ -42,41 +50,24 @@ function Skills() {
           <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {Object.entries(categorizedSkills).map(([category, skills], idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-background rounded-2xl p-8 border border-white/5 shadow-xl hover:border-primary/30 transition-colors duration-300"
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="bg-background rounded-xl p-5 border border-white/5 hover:border-primary/50 transition-colors shadow-sm flex items-start h-full"
             >
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-2 h-8 bg-primary rounded-full"></span>
-                {category}
-              </h3>
-              
-              <motion.div 
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="flex flex-wrap gap-3"
-              >
-                {skills.map((skill, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="px-4 py-2 bg-surface rounded-lg border border-white/10 text-gray-300 font-medium hover:text-primary hover:border-primary/50 transition-colors cursor-default select-none shadow-sm"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </motion.div>
+              <div className="w-2 h-2 rounded-full bg-primary mt-1.5 mr-3 flex-shrink-0"></div>
+              <span className="text-gray-300 font-medium text-sm leading-relaxed">{skill}</span>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
