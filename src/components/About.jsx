@@ -67,7 +67,7 @@ function About() {
             </div>
 
             <a 
-              href="/cv.pdf" 
+              href="/CV.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block mt-4 px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-emerald-600 transition-colors shadow-lg hover:shadow-primary/25"
